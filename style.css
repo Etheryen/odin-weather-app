@@ -1,0 +1,67 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-size: 1.25rem;
+  color: white;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #212121;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+form {
+  border-bottom: 5px solid #ccc;
+}
+
+.locationSearch {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  background-color: inherit;
+}
+
+.locationSearch:focus {
+  outline: none;
+}
+
+form > button {
+  background-color: inherit;
+  border: none;
+  padding-inline: 0.5rem;
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locationName {
+  font-size: 3rem;
+}
+
+.temp {
+  font-size: 7rem;
+}
+
+.temp::after {
+  content: '°';
+  display: inline;
+}
