@@ -1,3 +1,7 @@
+function capitalize(string) {
+  return string[0].toUpperCase() + string.slice(1);
+}
+
 function kelvinToCelcius(kelvin) {
   return kelvin - 273.15;
 }
@@ -18,17 +22,22 @@ async function getNeededData(location) {
   return { name, main, weather: weather[0] };
 }
 
-getNeededData('dubai').then((data) => console.log(data));
-
+const info = document.querySelector('#info');
 const search = document.querySelector('#search');
 const input = document.querySelector('#locationSearch');
 
 const locationName = document.querySelector('#locationName');
+const icon = document.querySelector('#icon');
+const desc = document.querySelector('#desc');
 const temp = document.querySelector('#temp');
 
 search.addEventListener('submit', async (ev) => {
   ev.preventDefault();
+  info.style.display = 'flex';
   const weatherData = await getNeededData(input.value);
   locationName.innerHTML = weatherData.name;
+  icon.style.backgroundImage = `url(https://openweathermap.org/img/wn/${weatherData.weather.icon}@4x.png)`;
+  desc.innerHTML = capitalize(weatherData.weather.description);
   temp.innerHTML = weatherData.main.temp;
+  input.value = '';
 });
